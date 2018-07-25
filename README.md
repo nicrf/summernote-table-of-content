@@ -7,11 +7,11 @@ Language support
 Option (h1,h2,h3..)
 
 
-Add link to 
+1. Add link to 
 ```
 <script src="js/summernote-table-of-content.js"></script>
 ```
-And button 'tableofcontent' :
+2. Add button 'tableofcontent' :
 ```javascript
 $('#editor-container').summernote({
 				toolbar:[					
