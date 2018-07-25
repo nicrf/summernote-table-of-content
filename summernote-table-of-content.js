@@ -57,11 +57,14 @@
           tooltip: 'Create a table of content',
           click: function() {
             // invoke insertText method with 'hello' on editor module.
-			var out = $note;
-			if (out.find("div[id='toc']").length!=0)
-				out.find("div[id='toc']").remove();
-			var h1 = $(out).find('h1');
-			var hList= "<div id='toc'><h1>Table des matières</h1><ul id='tableofcontent'>";
+			if ($editable.find("div[id='toc']").length!=0)
+				$editable.find("div[id='toc']").remove();
+			var h1 = $editable.find('h1');
+			var hList= "<h1>Table des matières</h1><ul id='tableofcontent'>";
+			var node = document.createElement('div');
+
+			
+			node.od = id='toc';
 			for (var i = 0; i < h1.length; i++)
 			{
 				if ($(h1[i]).text()!="")
@@ -102,8 +105,10 @@
 					hList += "</ul>";
 				}
 			}
-			hList += "</ul></div>";
-			$note.summernote('code', hList + out.html());
+			hList += "</ul>";
+			node.innerHTML = hList;
+			
+			$note.summernote('insertNode', node);
         }});
 
         // create jQuery object from button instance.
