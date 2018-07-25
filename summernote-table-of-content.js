@@ -58,8 +58,10 @@
           click: function() {
             // invoke insertText method with 'hello' on editor module.
 			var out = $note;
+			if (out.find("div[id='toc']").length!=0)
+				out.find("div[id='toc']").remove();
 			var h1 = $(out).find('h1');
-			var hList= "<h1>Table des matières</h1><ul id='tableofcontent'>";
+			var hList= "<div id='toc'><h1>Table des matières</h1><ul id='tableofcontent'>";
 			for (var i = 0; i < h1.length; i++)
 			{
 				if ($(h1[i]).text()!="")
@@ -100,7 +102,7 @@
 					hList += "</ul>";
 				}
 			}
-			hList += "</ul>";
+			hList += "</ul></div>";
 			$note.summernote('code', hList + out.html());
         }});
 
